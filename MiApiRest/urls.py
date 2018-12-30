@@ -19,14 +19,16 @@ from django.urls import path, include
 
 from django.http import HttpResponse, JsonResponse
 def holaMundo(request):
-    return HttpResponse("hola mundo")
+    return HttpResponse("hola mundo Django")
 def holaJsonResponse(request):
     return JsonResponse({"hola":"mundo"})
     
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',holaMundo ),
     path('json/',holaJsonResponse ),
-    path("usuarios/", include("usuarios.urls"))
+    path("usuarios/", include("usuarios.urls")),
+    path("videojuegos/", include("videojuegos.urls")),
 ]
