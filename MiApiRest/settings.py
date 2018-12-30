@@ -77,29 +77,29 @@ WSGI_APPLICATION = 'MiApiRest.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
 pymysql.install_as_MySQLdb()
-if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': '/cloudsql/<your-cloudsql-connection-string>',
-        'NAME': '<database-name>',
-        'USER': '<your-database-user>',
-        'PASSWORD': '<your-database-password>',
+
+if os.getenv('GAE_APPLICATION', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/<your-cloudsql-connection-string>',
+            'NAME': '<database-name>',
+            'USER': '<your-database-user>',
+            'PASSWORD': '<your-database-password>',
+        }
     }
-}
 else:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': '<ip-base>',
-        'PORT': '3306',
-        'NAME': '<database-name>',
-        'USER': '<your-database-user>',
-        'PASSWORD': '<your-database-password>',
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '<ip-base>',
+            'PORT': '3306',
+            'NAME': '<database-name>',
+            'USER': '<your-database-user>',
+            'PASSWORD': '<your-database-password>',
+        }
     }
-}
 
 
 # Password validation
