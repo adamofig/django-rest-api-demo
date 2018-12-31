@@ -75,8 +75,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'MiApiRest.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+
+import pymysql  
 pymysql.install_as_MySQLdb()
 
 if os.getenv('GAE_APPLICATION', None):
